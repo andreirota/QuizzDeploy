@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Question{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>{{ question.question }}</h1>
+
+    <form method="post">
+        <div>
+            {% for reponse in reponses %}
+                <div>
+                    <input type="radio" id="reponse_{{ reponse.id }}" name="reponse" value="{{ reponse.id }}" required>
+                    <label for="reponse_{{ reponse.id }}">{{ reponse.reponse }}</label>
+                </div>
+                
+                
+            {% endfor %}
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+{% endblock %}

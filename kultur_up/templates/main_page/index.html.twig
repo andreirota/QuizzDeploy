@@ -1,0 +1,40 @@
+{% extends 'host_page/index.html.twig' %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; margin-top:-60px; max-width: 500px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+    <div class='logout'>
+    {% if app.user %}
+            <div class="mb-3">
+                <a class='logoutbtn' href="{{ path('app_logout') }}">Logout</a>
+            </div>
+    {% endif %}
+    </div>
+<div class="example-wrapper">
+    <h1>Hello, you are logged in as {{ app.user.userIdentifier }}!</h1>
+    
+    <div class='quizzlist'>
+    <h2 class='title'>Create your own quizz!</h2>
+    <div class='title'>
+    {% if app.user %}
+        <div>
+            <a href="{{ path('app_create_quizz') }}">Enlighten the others!</a>
+        </div>
+    {% endif %}
+    </div>
+    <h1>Time to Kultur'UP !</h1>
+        <ul>
+    {% for categorie in categories %}
+    <li>
+     <a href="{{ path('app_categorie', { id: categorie.id }) }}">{{ categorie.name }}</a>
+    </li>
+    {% endfor %}
+    </ul>
+    </div>
+    
+   
+</div>
+{% endblock %}
